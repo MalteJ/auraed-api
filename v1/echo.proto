@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package proto.echo; // This is arbitrary, set it to your directory structure
+package v1.echo.proto; // This is arbitrary, set it to your directory structure
 
 // EchoRequest is the request for echo.
 message EchoRequest { string message = 1; }
