@@ -30,7 +30,7 @@
 
 syntax = "proto3";
 
-package aurae.runtime;
+package v1.runtime.aurae;
 
 service LocalRuntime {
 
