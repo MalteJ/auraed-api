@@ -11,7 +11,7 @@ Here lives the current API specification for the current version of the Aurae AP
 2. Spend time (perhaps using hackmd or a google doc) building out your subsystem definition. Be as detailed as possible.
 3. Open a pull request with the new proposal against this repository. 
 
-For example if you wanted to propose a new subsystem called `boops` you would copy `_systemd.md` to `boops.md` and file out the new file.
+For example if you wanted to propose a new subsystem called `boops` you would copy `_systemd.md` to `boops.md` and fill out the new file.
 
 ### Requesting a Change (RFC) to an existing subsystem 
 
