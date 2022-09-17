@@ -70,6 +70,10 @@ service Runtime {
 
 // Containers
 
+message Container {
+
+}
+
 message RegisterContainerRequest {
   repeated meta.AuraeMeta meta = 1;
 }
@@ -104,6 +108,11 @@ message DestroyContainerResponse {
 
 // VirtualMachines
 
+message VirtualMachine {
+
+}
+
+
 message RegisterVirtualMachineRequest {
   repeated meta.AuraeMeta meta = 1;
 }
@@ -137,6 +146,11 @@ message DestroyVirtualMachineResponse {
 }
 
 // Executables
+
+message Executable {
+
+}
+
 
 message RegisterExecutableRequest {
   repeated meta.AuraeMeta meta = 1;
