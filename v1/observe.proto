@@ -34,7 +34,6 @@ package observe;
 
 import "meta.proto";
 
-// Observe is a service that offers visibility into the state of an Aurae system
 service Observe {
 
   rpc Status(StatusRequest) returns (StatusResponse) {}

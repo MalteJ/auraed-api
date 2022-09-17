@@ -34,107 +34,108 @@ package runtime;
 
 import "meta.proto";
 
-// LocalRuntime is a service that schedules processes against a local system.
-service LocalRuntime {
-
-  // RunProcess is modelled off systemd "ExecStart" which calls fork(2)
-  rpc RunProcess(RunProcessRequest) returns (RunProcessResponse) {}
-
-  rpc ReadStdout(ReadStdoutRequest) returns (ReadStdoutResponse) {}
-  rpc ReadStderr(ReadStderrRequest) returns (ReadStderrResponse) {}
-}
-
-message RunProcessRequest {
-  repeated meta.AuraeMeta meta = 1;
-
-  // ExecutableCommand is a carry-over of systemd's "ExecStart"
-  // field.
-  //
-  // This is a verbatim translation of a shell command which can
-  // be executed by execve(2) and clone(2)/fork(2).
-  //
-  // Examples:
-  //    "bash -c ./mycommand --boops=beeps"
-  //    "cat /etc/shadow"
-  //    "ENVAR=false ls -lat /etc"
-  //
-  string ExecutableCommand = 2;
-
-  // User is the string version of the associated OS user.
-  // Note: This is NOT the UID/GUID of the user.
-  //
-  // Examples:
-  //    "nova"
-  //    "wheel"
-  //    "root"
-  string User = 3;
-
-  // Description is an arbitrary description of the process.
-  // This is modelled after systemd Description.
-  string Description = 4;
-}
-
-
-message ReadStdoutRequest {
-  repeated meta.AuraeMeta meta = 1;
-  int32 PID = 2;
-  int32 Length = 3;
-}
-
-message ReadStderrRequest {
-  repeated meta.AuraeMeta meta = 1;
-  int32 PID = 2;
-  int32 Length = 3;
-}
-
-message ReadStdoutResponse {
-  repeated meta.AuraeMeta meta = 1;
-  int32 PID = 2;
-  string Data = 3;
-  int32 Size = 4;
-}
-
-message ReadStderrResponse {
-  repeated meta.AuraeMeta meta = 1;
-  int32 PID = 2;
-  string Data = 3;
-  int32 Size = 4;
-}
-
-
-message RunProcessResponse {
-  repeated meta.AuraeMeta meta = 1;
-  int32 PID = 2;
-}
 //
+//// LocalRuntime is a service that schedules processes against a local system.
+//service LocalRuntime {
 //
+//  // RunProcess is modelled off systemd "ExecStart" which calls fork(2)
+//  rpc RunProcess(RunProcessRequest) returns (RunProcessResponse) {}
 //
+//  rpc ReadStdout(ReadStdoutRequest) returns (ReadStdoutResponse) {}
+//  rpc ReadStderr(ReadStderrRequest) returns (ReadStderrResponse) {}
+//}
 //
+//message RunProcessRequest {
+//  repeated meta.AuraeMeta meta = 1;
 //
-//service SandboxRuntime {
-//
-//  // RunContainer
+//  // ExecutableCommand is a carry-over of systemd's "ExecStart"
+//  // field.
 //  //
-//  // RunContainer is modelled after container runtimes leveraging
-//  // cgroup namespaces which calls clone(2)
-//  rpc RunContainer(RunContainerRequest) returns (RunContainerResponse) {}
+//  // This is a verbatim translation of a shell command which can
+//  // be executed by execve(2) and clone(2)/fork(2).
+//  //
+//  // Examples:
+//  //    "bash -c ./mycommand --boops=beeps"
+//  //    "cat /etc/shadow"
+//  //    "ENVAR=false ls -lat /etc"
+//  //
+//  string ExecutableCommand = 2;
 //
-//  // RunVirtualMachine
-//  rpc RunVirtualMachine(RunVirtualMachineRequest)
-//      returns (RunVirtualMachineResponse) {}
+//  // User is the string version of the associated OS user.
+//  // Note: This is NOT the UID/GUID of the user.
+//  //
+//  // Examples:
+//  //    "nova"
+//  //    "wheel"
+//  //    "root"
+//  string User = 3;
+//
+//  // Description is an arbitrary description of the process.
+//  // This is modelled after systemd Description.
+//  string Description = 4;
 //}
 //
 //
-//message RunContainerRequest { string Name = 1; }
-//
-//message RunContainerResponse {
-//  int32 Code = 10;
-//  string Message = 12;
+//message ReadStdoutRequest {
+//  repeated meta.AuraeMeta meta = 1;
+//  int32 PID = 2;
+//  int32 Length = 3;
 //}
 //
-//message RunVirtualMachineRequest { string Name = 1; }
-//
-//message RunVirtualMachineResponse {
-//  int32 Code = 10;
-//  string Message = 12;
+//message ReadStderrRequest {
+//  repeated meta.AuraeMeta meta = 1;
+//  int32 PID = 2;
+//  int32 Length = 3;
 //}
+//
+//message ReadStdoutResponse {
+//  repeated meta.AuraeMeta meta = 1;
+//  int32 PID = 2;
+//  string Data = 3;
+//  int32 Size = 4;
+//}
+//
+//message ReadStderrResponse {
+//  repeated meta.AuraeMeta meta = 1;
+//  int32 PID = 2;
+//  string Data = 3;
+//  int32 Size = 4;
+//}
+//
+//
+//message RunProcessResponse {
+//  repeated meta.AuraeMeta meta = 1;
+//  int32 PID = 2;
+//}
+////
+////
+////
+////
+////
+////service SandboxRuntime {
+////
+////  // RunContainer
+////  //
+////  // RunContainer is modelled after container runtimes leveraging
+////  // cgroup namespaces which calls clone(2)
+////  rpc RunContainer(RunContainerRequest) returns (RunContainerResponse) {}
+////
+////  // RunVirtualMachine
+////  rpc RunVirtualMachine(RunVirtualMachineRequest)
+////      returns (RunVirtualMachineResponse) {}
+////}
+////
+////
+////message RunContainerRequest { string Name = 1; }
+////
+////message RunContainerResponse {
+////  int32 Code = 10;
+////  string Message = 12;
+////}
+////
+////message RunVirtualMachineRequest { string Name = 1; }
+////
+////message RunVirtualMachineResponse {
+////  int32 Code = 10;
+////  string Message = 12;
+////}
