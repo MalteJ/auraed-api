@@ -34,108 +34,138 @@ package runtime;
 
 import "meta.proto";
 
-//
-//// LocalRuntime is a service that schedules processes against a local system.
-//service LocalRuntime {
-//
-//  // RunProcess is modelled off systemd "ExecStart" which calls fork(2)
-//  rpc RunProcess(RunProcessRequest) returns (RunProcessResponse) {}
-//
-//  rpc ReadStdout(ReadStdoutRequest) returns (ReadStdoutResponse) {}
-//  rpc ReadStderr(ReadStderrRequest) returns (ReadStderrResponse) {}
-//}
-//
-//message RunProcessRequest {
-//  repeated meta.AuraeMeta meta = 1;
-//
-//  // ExecutableCommand is a carry-over of systemd's "ExecStart"
-//  // field.
-//  //
-//  // This is a verbatim translation of a shell command which can
-//  // be executed by execve(2) and clone(2)/fork(2).
-//  //
-//  // Examples:
-//  //    "bash -c ./mycommand --boops=beeps"
-//  //    "cat /etc/shadow"
-//  //    "ENVAR=false ls -lat /etc"
-//  //
-//  string ExecutableCommand = 2;
-//
-//  // User is the string version of the associated OS user.
-//  // Note: This is NOT the UID/GUID of the user.
-//  //
-//  // Examples:
-//  //    "nova"
-//  //    "wheel"
-//  //    "root"
-//  string User = 3;
-//
-//  // Description is an arbitrary description of the process.
-//  // This is modelled after systemd Description.
-//  string Description = 4;
-//}
-//
-//
-//message ReadStdoutRequest {
-//  repeated meta.AuraeMeta meta = 1;
-//  int32 PID = 2;
-//  int32 Length = 3;
-//}
-//
-//message ReadStderrRequest {
-//  repeated meta.AuraeMeta meta = 1;
-//  int32 PID = 2;
-//  int32 Length = 3;
-//}
-//
-//message ReadStdoutResponse {
-//  repeated meta.AuraeMeta meta = 1;
-//  int32 PID = 2;
-//  string Data = 3;
-//  int32 Size = 4;
-//}
-//
-//message ReadStderrResponse {
-//  repeated meta.AuraeMeta meta = 1;
-//  int32 PID = 2;
-//  string Data = 3;
-//  int32 Size = 4;
-//}
-//
-//
-//message RunProcessResponse {
-//  repeated meta.AuraeMeta meta = 1;
-//  int32 PID = 2;
-//}
-////
-////
-////
-////
-////
-////service SandboxRuntime {
-////
-////  // RunContainer
-////  //
-////  // RunContainer is modelled after container runtimes leveraging
-////  // cgroup namespaces which calls clone(2)
-////  rpc RunContainer(RunContainerRequest) returns (RunContainerResponse) {}
-////
-////  // RunVirtualMachine
-////  rpc RunVirtualMachine(RunVirtualMachineRequest)
-////      returns (RunVirtualMachineResponse) {}
-////}
-////
-////
-////message RunContainerRequest { string Name = 1; }
-////
-////message RunContainerResponse {
-////  int32 Code = 10;
-////  string Message = 12;
-////}
-////
-////message RunVirtualMachineRequest { string Name = 1; }
-////
-////message RunVirtualMachineResponse {
-////  int32 Code = 10;
-////  string Message = 12;
-////}
+service Runtime {
+
+  // Executable
+
+  rpc RegisterExecutable(RegisterExecutableRequest) returns (RegisterExecutableResponse) {}
+
+  rpc StartExecutable(StartExecutableRequest) returns (StartExecutableResponse) {}
+
+  rpc StopExecutable(StopExecutableRequest) returns (StopExecutableResponse) {}
+
+  rpc DestroyExecutable(DestroyExecutableRequest) returns (DestroyExecutableResponse) {}
+
+  // VirtualMachine
+
+  rpc RegisterVirtualMachine(RegisterVirtualMachineRequest) returns (RegisterVirtualMachineResponse) {}
+
+  rpc StartVirtualMachine(StartVirtualMachineRequest) returns (StartVirtualMachineResponse) {}
+
+  rpc StopVirtualMachine(StopVirtualMachineRequest) returns (StopVirtualMachineResponse) {}
+
+  rpc DestroyVirtualMachine(DestroyVirtualMachineRequest) returns (DestroyVirtualMachineResponse) {}
+
+  // Containers
+
+  rpc RegisterContainer(RegisterContainerRequest) returns (RegisterContainerResponse) {}
+
+  rpc StartContainer(StartContainerRequest) returns (StartContainerResponse) {}
+
+  rpc StopContainer(StopContainerRequest) returns (StopContainerResponse) {}
+
+  rpc DestroyContainer(DestroyContainerRequest) returns (DestroyContainerResponse) {}
+
+}
+
+// Containers
+
+message RegisterContainerRequest {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message RegisterContainerResponse {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message StartContainerRequest {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message StartContainerResponse {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message StopContainerRequest {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message StopContainerResponse {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message DestroyContainerRequest {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message DestroyContainerResponse {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+// VirtualMachines
+
+message RegisterVirtualMachineRequest {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message RegisterVirtualMachineResponse {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message StartVirtualMachineRequest {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message StartVirtualMachineResponse {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message StopVirtualMachineRequest {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message StopVirtualMachineResponse {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message DestroyVirtualMachineRequest {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message DestroyVirtualMachineResponse {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+// Executables
+
+message RegisterExecutableRequest {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message RegisterExecutableResponse {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message StartExecutableRequest {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message StartExecutableResponse {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message StopExecutableRequest {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message StopExecutableResponse {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message DestroyExecutableRequest {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message DestroyExecutableResponse {
+  repeated meta.AuraeMeta meta = 1;
+}
