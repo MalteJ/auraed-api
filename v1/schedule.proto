@@ -1,0 +1,185 @@
+/* -------------------------------------------------------------------------- *\
+ *             Apache 2.0 License Copyright © 2022 The Aurae Authors          *
+ *                                                                            *
+ *                +--------------------------------------------+              *
+ *                |   █████╗ ██╗   ██╗██████╗  █████╗ ███████╗ |              *
+ *                |  ██╔══██╗██║   ██║██╔══██╗██╔══██╗██╔════╝ |              *
+ *                |  ███████║██║   ██║██████╔╝███████║█████╗   |              *
+ *                |  ██╔══██║██║   ██║██╔══██╗██╔══██║██╔══╝   |              *
+ *                |  ██║  ██║╚██████╔╝██║  ██║██║  ██║███████╗ |              *
+ *                |  ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝ |              *
+ *                +--------------------------------------------+              *
+ *                                                                            *
+ *                         Distributed Systems Runtime                        *
+ *                                                                            *
+ * -------------------------------------------------------------------------- *
+ *                                                                            *
+ *   Licensed under the Apache License, Version 2.0 (the "License");          *
+ *   you may not use this file except in compliance with the License.         *
+ *   You may obtain a copy of the License at                                  *
+ *                                                                            *
+ *       http://www.apache.org/licenses/LICENSE-2.0                           *
+ *                                                                            *
+ *   Unless required by applicable law or agreed to in writing, software      *
+ *   distributed under the License is distributed on an "AS IS" BASIS,        *
+ *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. *
+ *   See the License for the specific language governing permissions and      *
+ *   limitations under the License.                                           *
+ *                                                                            *
+\* -------------------------------------------------------------------------- */
+
+syntax = "proto3";
+
+package runtime;
+
+import "meta.proto";
+
+service Runtime {
+
+  // Executable
+
+  rpc RegisterExecutable(RegisterExecutableRequest) returns (RegisterExecutableResponse) {}
+
+  rpc StartExecutable(StartExecutableRequest) returns (StartExecutableResponse) {}
+
+  rpc StopExecutable(StopExecutableRequest) returns (StopExecutableResponse) {}
+
+  rpc DestroyExecutable(DestroyExecutableRequest) returns (DestroyExecutableResponse) {}
+
+  // VirtualMachine
+
+  rpc RegisterVirtualMachine(RegisterVirtualMachineRequest) returns (RegisterVirtualMachineResponse) {}
+
+  rpc StartVirtualMachine(StartVirtualMachineRequest) returns (StartVirtualMachineResponse) {}
+
+  rpc StopVirtualMachine(StopVirtualMachineRequest) returns (StopVirtualMachineResponse) {}
+
+  rpc DestroyVirtualMachine(DestroyVirtualMachineRequest) returns (DestroyVirtualMachineResponse) {}
+
+  // Containers
+
+  rpc RegisterContainer(RegisterContainerRequest) returns (RegisterContainerResponse) {}
+
+  rpc StartContainer(StartContainerRequest) returns (StartContainerResponse) {}
+
+  rpc StopContainer(StopContainerRequest) returns (StopContainerResponse) {}
+
+  rpc DestroyContainer(DestroyContainerRequest) returns (DestroyContainerResponse) {}
+
+}
+
+// Containers
+
+message Container {
+
+}
+
+message RegisterContainerRequest {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message RegisterContainerResponse {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message StartContainerRequest {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message StartContainerResponse {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message StopContainerRequest {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message StopContainerResponse {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message DestroyContainerRequest {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message DestroyContainerResponse {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+// VirtualMachines
+
+message VirtualMachine {
+
+}
+
+
+message RegisterVirtualMachineRequest {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message RegisterVirtualMachineResponse {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message StartVirtualMachineRequest {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message StartVirtualMachineResponse {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message StopVirtualMachineRequest {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message StopVirtualMachineResponse {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message DestroyVirtualMachineRequest {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message DestroyVirtualMachineResponse {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+// Executables
+
+message Executable {
+
+}
+
+
+message RegisterExecutableRequest {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message RegisterExecutableResponse {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message StartExecutableRequest {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message StartExecutableResponse {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message StopExecutableRequest {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message StopExecutableResponse {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message DestroyExecutableRequest {
+  repeated meta.AuraeMeta meta = 1;
+}
+
+message DestroyExecutableResponse {
+  repeated meta.AuraeMeta meta = 1;
+}
