@@ -145,8 +145,7 @@ message DestroyVirtualMachineResponse {
   repeated meta.AuraeMeta meta = 1;
 }
 
-// Executables
-
+// Executable
 message Executable {
   repeated meta.AuraeMeta meta = 1;
   string Name = 2;
