@@ -38,33 +38,33 @@ service Runtime {
 
   // Executable
 
-  rpc RegisterExecutable(Executable) returns (RegisterExecutableResponse) {}
+  rpc RegisterExecutable(Executable) returns (ExecutableStatus) {}
 
-  rpc StartExecutable(Executable) returns (StartExecutableResponse) {}
+  rpc StartExecutable(Executable) returns (ExecutableStatus) {}
 
-  rpc StopExecutable(Executable) returns (StopExecutableResponse) {}
+  rpc StopExecutable(Executable) returns (ExecutableStatus) {}
 
-  rpc DestroyExecutable(Executable) returns (DestroyExecutableResponse) {}
+  rpc DestroyExecutable(Executable) returns (ExecutableStatus) {}
 
   // VirtualMachine
 
-  rpc RegisterVirtualMachine(RegisterVirtualMachineRequest) returns (RegisterVirtualMachineResponse) {}
-
-  rpc StartVirtualMachine(StartVirtualMachineRequest) returns (StartVirtualMachineResponse) {}
-
-  rpc StopVirtualMachine(StopVirtualMachineRequest) returns (StopVirtualMachineResponse) {}
-
-  rpc DestroyVirtualMachine(DestroyVirtualMachineRequest) returns (DestroyVirtualMachineResponse) {}
-
-  // Containers
-
-  rpc RegisterContainer(RegisterContainerRequest) returns (RegisterContainerResponse) {}
-
-  rpc StartContainer(StartContainerRequest) returns (StartContainerResponse) {}
-
-  rpc StopContainer(StopContainerRequest) returns (StopContainerResponse) {}
-
-  rpc DestroyContainer(DestroyContainerRequest) returns (DestroyContainerResponse) {}
+//  rpc RegisterVirtualMachine(RegisterVirtualMachineRequest) returns (RegisterVirtualMachineResponse) {}
+//
+//  rpc StartVirtualMachine(StartVirtualMachineRequest) returns (StartVirtualMachineResponse) {}
+//
+//  rpc StopVirtualMachine(StopVirtualMachineRequest) returns (StopVirtualMachineResponse) {}
+//
+//  rpc DestroyVirtualMachine(DestroyVirtualMachineRequest) returns (DestroyVirtualMachineResponse) {}
+//
+//  // Containers
+//
+//  rpc RegisterContainer(RegisterContainerRequest) returns (RegisterContainerResponse) {}
+//
+//  rpc StartContainer(StartContainerRequest) returns (StartContainerResponse) {}
+//
+//  rpc StopContainer(StopContainerRequest) returns (StopContainerResponse) {}
+//
+//  rpc DestroyContainer(DestroyContainerRequest) returns (DestroyContainerResponse) {}
 
 }
 
@@ -154,35 +154,41 @@ message Executable {
   string Comment = 4;
 }
 
-
-message RegisterExecutableRequest {
+message ExecutableStatus {
   repeated meta.AuraeMeta meta = 1;
+  string Name = 2;
+  string State = 3;
 }
 
-message RegisterExecutableResponse {
-  repeated meta.AuraeMeta meta = 1;
-}
-
-message StartExecutableRequest {
-  repeated meta.AuraeMeta meta = 1;
-}
-
-message StartExecutableResponse {
-  repeated meta.AuraeMeta meta = 1;
-}
-
-message StopExecutableRequest {
-  repeated meta.AuraeMeta meta = 1;
-}
-
-message StopExecutableResponse {
-  repeated meta.AuraeMeta meta = 1;
-}
-
-message DestroyExecutableRequest {
-  repeated meta.AuraeMeta meta = 1;
-}
-
-message DestroyExecutableResponse {
-  repeated meta.AuraeMeta meta = 1;
-}
+//
+//message RegisterExecutableRequest {
+//  repeated meta.AuraeMeta meta = 1;
+//}
+//
+//message RegisterExecutableResponse {
+//  repeated meta.AuraeMeta meta = 1;
+//}
+//
+//message StartExecutableRequest {
+//  repeated meta.AuraeMeta meta = 1;
+//}
+//
+//message StartExecutableResponse {
+//  repeated meta.AuraeMeta meta = 1;
+//}
+//
+//message StopExecutableRequest {
+//  repeated meta.AuraeMeta meta = 1;
+//}
+//
+//message StopExecutableResponse {
+//  repeated meta.AuraeMeta meta = 1;
+//}
+//
+//message DestroyExecutableRequest {
+//  repeated meta.AuraeMeta meta = 1;
+//}
+//
+//message DestroyExecutableResponse {
+//  repeated meta.AuraeMeta meta = 1;
+//}
