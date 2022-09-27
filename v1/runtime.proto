@@ -38,13 +38,13 @@ service Runtime {
 
   // Executable
 
-  rpc RegisterExecutable(RegisterExecutableRequest) returns (RegisterExecutableResponse) {}
+  rpc RegisterExecutable(Executable) returns (RegisterExecutableResponse) {}
 
-  rpc StartExecutable(StartExecutableRequest) returns (StartExecutableResponse) {}
+  rpc StartExecutable(Executable) returns (StartExecutableResponse) {}
 
-  rpc StopExecutable(StopExecutableRequest) returns (StopExecutableResponse) {}
+  rpc StopExecutable(Executable) returns (StopExecutableResponse) {}
 
-  rpc DestroyExecutable(DestroyExecutableRequest) returns (DestroyExecutableResponse) {}
+  rpc DestroyExecutable(Executable) returns (DestroyExecutableResponse) {}
 
   // VirtualMachine
 
@@ -148,7 +148,10 @@ message DestroyVirtualMachineResponse {
 // Executables
 
 message Executable {
-
+  repeated meta.AuraeMeta meta = 1;
+  string Name = 2;
+  string Exec = 3;
+  string Comment = 4;
 }
 
 
