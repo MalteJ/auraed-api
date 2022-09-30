@@ -36,7 +36,7 @@ import "meta.proto";
 
 service Runtime {
 
-  // Executable
+  // Executable -> ExecutableStatus
 
   rpc RegisterExecutable(Executable) returns (ExecutableStatus) {}
 
@@ -45,6 +45,22 @@ service Runtime {
   rpc StopExecutable(Executable) returns (ExecutableStatus) {}
 
   rpc DestroyExecutable(Executable) returns (ExecutableStatus) {}
+
+}
+
+// Executable
+message Executable {
+  repeated meta.AuraeMeta meta = 1;
+  string Name = 2;
+  string Exec = 3;
+  string Comment = 4;
+}
+
+message ExecutableStatus {
+  repeated meta.AuraeMeta meta = 1;
+  string Name = 2;
+  string State = 3;
+}
 
   // VirtualMachine
 
@@ -66,98 +82,86 @@ service Runtime {
 //
 //  rpc DestroyContainer(DestroyContainerRequest) returns (DestroyContainerResponse) {}
 
-}
+//}
 
 // Containers
 
-message Container {
+//message Container {
+//
+//}
+//
+//message RegisterContainerRequest {
+//  repeated meta.AuraeMeta meta = 1;
+//}
+//
+//message RegisterContainerResponse {
+//  repeated meta.AuraeMeta meta = 1;
+//}
+//
+//message StartContainerRequest {
+//  repeated meta.AuraeMeta meta = 1;
+//}
+//
+//message StartContainerResponse {
+//  repeated meta.AuraeMeta meta = 1;
+//}
+//
+//message StopContainerRequest {
+//  repeated meta.AuraeMeta meta = 1;
+//}
+//
+//message StopContainerResponse {
+//  repeated meta.AuraeMeta meta = 1;
+//}
+//
+//message DestroyContainerRequest {
+//  repeated meta.AuraeMeta meta = 1;
+//}
+//
+//message DestroyContainerResponse {
+//  repeated meta.AuraeMeta meta = 1;
+//}
+//
+//// VirtualMachines
+//
+//message VirtualMachine {
+//
+//}
+//
+//
+//message RegisterVirtualMachineRequest {
+//  repeated meta.AuraeMeta meta = 1;
+//}
+//
+//message RegisterVirtualMachineResponse {
+//  repeated meta.AuraeMeta meta = 1;
+//}
+//
+//message StartVirtualMachineRequest {
+//  repeated meta.AuraeMeta meta = 1;
+//}
+//
+//message StartVirtualMachineResponse {
+//  repeated meta.AuraeMeta meta = 1;
+//}
+//
+//message StopVirtualMachineRequest {
+//  repeated meta.AuraeMeta meta = 1;
+//}
+//
+//message StopVirtualMachineResponse {
+//  repeated meta.AuraeMeta meta = 1;
+//}
+//
+//message DestroyVirtualMachineRequest {
+//  repeated meta.AuraeMeta meta = 1;
+//}
+//
+//message DestroyVirtualMachineResponse {
+//  repeated meta.AuraeMeta meta = 1;
+//}
 
-}
 
-message RegisterContainerRequest {
-  repeated meta.AuraeMeta meta = 1;
-}
-
-message RegisterContainerResponse {
-  repeated meta.AuraeMeta meta = 1;
-}
-
-message StartContainerRequest {
-  repeated meta.AuraeMeta meta = 1;
-}
-
-message StartContainerResponse {
-  repeated meta.AuraeMeta meta = 1;
-}
-
-message StopContainerRequest {
-  repeated meta.AuraeMeta meta = 1;
-}
-
-message StopContainerResponse {
-  repeated meta.AuraeMeta meta = 1;
-}
-
-message DestroyContainerRequest {
-  repeated meta.AuraeMeta meta = 1;
-}
-
-message DestroyContainerResponse {
-  repeated meta.AuraeMeta meta = 1;
-}
-
-// VirtualMachines
-
-message VirtualMachine {
-
-}
-
-
-message RegisterVirtualMachineRequest {
-  repeated meta.AuraeMeta meta = 1;
-}
-
-message RegisterVirtualMachineResponse {
-  repeated meta.AuraeMeta meta = 1;
-}
-
-message StartVirtualMachineRequest {
-  repeated meta.AuraeMeta meta = 1;
-}
-
-message StartVirtualMachineResponse {
-  repeated meta.AuraeMeta meta = 1;
-}
-
-message StopVirtualMachineRequest {
-  repeated meta.AuraeMeta meta = 1;
-}
-
-message StopVirtualMachineResponse {
-  repeated meta.AuraeMeta meta = 1;
-}
-
-message DestroyVirtualMachineRequest {
-  repeated meta.AuraeMeta meta = 1;
-}
-
-message DestroyVirtualMachineResponse {
-  repeated meta.AuraeMeta meta = 1;
-}
-
-// Executable
-message Executable {
-  repeated meta.AuraeMeta meta = 1;
-  string Name = 2;
-  string Exec = 3;
-  string Comment = 4;
-}
-
-message ExecutableStatus {
-  repeated meta.AuraeMeta meta = 1;
-  string Name = 2;
-  string State = 3;
-}
 
 //
 //message RegisterExecutableRequest {
